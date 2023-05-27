@@ -23,6 +23,7 @@ clientRouter.post(
   '',
   validateBody(clientCreationRequestSchema),
   checkIfUnique(Client, 'email'),
+  checkIfUnique(Client, 'phoneNumber'),
   createClientController
 );
 
