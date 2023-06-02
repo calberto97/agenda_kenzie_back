@@ -1,12 +1,15 @@
 import {
-  userSchema,
-  userArraySchema,
-  userCreationResultSchema,
-  userCreationRequestSchema,
-} from "./client";
+  clientSchema,
+  clientCreationRequestSchema,
+  clientCreationResultSchema,
+  clientPatchRequestSchema,
+  clientLoginSchema,
+} from './client';
 
 export {
-  userSchema,
-  userCreationRequestSchema, userCreationResultSchema,
-  userArraySchema,
+  clientSchema,
+  clientCreationRequestSchema,
+  clientCreationResultSchema,
+  clientPatchRequestSchema,
+  clientLoginSchema,
 };

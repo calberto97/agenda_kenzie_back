@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.contactRouter = void 0;
+const contact_controllers_copy_1 = require("./../controllers/contact.controllers copy");
+const checkIfOwner_1 = require("./../middlewares/checkIfOwner");
+const checkIfContactExists_1 = require("./../middlewares/checkIfContactExists");
+const contact_1 = require("./../schemas/contact");
+const validateToken_1 = require("../middlewares/validateToken");
+const express_1 = require("express");
+const validateBody_1 = require("../middlewares/validateBody");
+exports.contactRouter = (0, express_1.Router)();
+exports.contactRouter.post('', validateToken_1.validateToken, (0, validateBody_1.validateBody)(contact_1.contactCreationRequestSchema), contact_controllers_copy_1.createContactController);
+exports.contactRouter.get('/:id', validateToken_1.validateToken, checkIfContactExists_1.checkIfContactExists, checkIfOwner_1.checkIfOwner, contact_controllers_copy_1.getContactDetailController);
+exports.contactRouter.patch('/:id', validateToken_1.validateToken, checkIfContactExists_1.checkIfContactExists, checkIfOwner_1.checkIfOwner, (0, validateBody_1.validateBody)(contact_1.contactPatchSchema), contact_controllers_copy_1.patchContactController);
+exports.contactRouter.delete('/:id', validateToken_1.validateToken, checkIfContactExists_1.checkIfContactExists, checkIfOwner_1.checkIfOwner, contact_controllers_copy_1.deleteContactController);
